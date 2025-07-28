@@ -1,18 +1,17 @@
-require("math")
+local background
 
 function love.load()
-  number = 0
-  sec = 0
+    background = love.graphics.newImage("assets/sprites/background.png")
 end
 
-function love.update(dt)
-  number = number + 1
-  if(math.fmod(number, 60) == 0) then
-    sec = sec + 1
-  end
+function love.update()
+
 end
 
 function love.draw()
-  
-  love.graphics.print(sec)
+  for i = 0, love.graphics.getWidth() / background:getWidth() do
+    for j = 0, love.graphics.getHeight() / background:getHeight() do
+      love.graphics.draw(background, i * background:getWidth(), j * background:getHeight())
+    end
+  end
 end

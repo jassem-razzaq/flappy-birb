@@ -1,6 +1,7 @@
 Birb = Class{}
 
 local GRAVITY = 20
+local ANTIGRAVITY = -5
 
 function Birb:init()
   self.image = love.graphics.newImage('assets/sprites/birb.png')
@@ -16,6 +17,10 @@ end
 function Birb:update(dt)
   self.dy = self.dy + GRAVITY * dt
   self.y = self.y + self.dy
+
+  if love.keyboard.wasPressed('space') then
+      self.dy = ANTIGRAVITY
+  end
 end
 
 function Birb:render()
